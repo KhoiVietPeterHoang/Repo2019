@@ -1,0 +1,85 @@
+--------------------------------------------------
+--------------------------------------------------
+
+A thread is a lightweight sub-process, the smallest unit of processing.
+
+The JVM gives each thread its own method-call stack. In addition to tracking the current byte code instruction, the method-call stack tracks local variables, parameters the JVM passes to a method, and the method's return value.
+
+When multiple threads execute byte-code instruction sequences in the same program, that action is known as multithreading.
+
+Why threads?
+ - Multithreaded GUI: Non-blocking UI
+ - Multi-core computer: Faster
+ - Threads are independent, so it doesn't affect other threads if an exception occurs in a single thread.
+
+However, we use multithreading than multiprocessing because threads use a shared memory area. They don't allocate separate memory area so saves memory, and context-switching between the threads takes less time than process.
+
+Thread scheduling and the JVM
+Most (if not all) JVM implementations use the underlying platform's threading capabilities. Because those capabilities are platform-specific, the order of your multithreaded programs' output might differ from the order of someone else's output. That difference results from scheduling.
+
+--------------------------------------------------
+--------------------------------------------------
+
+Multitasking
+    - Process-based Multitasking (Multiprocessing)
+
+    Each process has an address in memory. In other words, each process allocates a separate memory area.
+    A process is heavyweight.
+    Cost of communication between the process is high.
+    Switching from one process to another requires some time for saving and loading registers, memory maps, updating lists, etc.
+
+    - Thread-based Multitasking (Multithreading)
+
+    Threads share the same address space.
+    A thread is lightweight.
+    Cost of communication between the thread is low.
+
+--------------------------------------------------
+--------------------------------------------------
+
+https://docs.oracle.com/javase/tutorial/essential/concurrency/sync.html
+
+Synchronization: 2 types of problems: thread interference and memory consistency errors
+
+- The tool needed to prevent these errors is synchronization.
+- Thread contention, which occurs when two or more threads try to access the same resource simultaneously
+    - Deadlock, Starvation and livelock are forms of thread contention.
+
+Deadlock: blocked forever
+Starvation: not blocked but 1 thread has the majority of the access
+Livelock: thread 1 waits for thread 2 to respond, thread 2 waits for thread 1 to respond, they are busy responding to each other
+            - Example: 2 people walking down a street and sidestepping each other
+
+
+--------------------------------------------------
+--------------------------------------------------
+
+*Mutual Exclusive: other threads can't interfere with the data
+*Critical section: A black of code that cannot be executed by more than one thread at a time.
+*Race Conditions: //When multiple threads executes a Criticial section a Race Conditon occurs.
+A race between two threads, and depending on which read finishes first the final result might differ.
+
+*Thread safety: A process which can make the program safe to use in multithreaded environment.
+- There are several ways to make a thread safe
+- Synchronization, locks, volatile - etc.
+
+*Multiprocessing vs multithreading vs multitasking:
+- Multitasking -> Multiple programs can be interacted with simultaniously
+- Multithreading -> Allows multiple threads of single tasks to be processed by the CPU at the same time ->
+>>>> Thread based multitasking, as programs may contain multiple thread, in case of fault and error that a thread stops
+>>>> running, the other threads will run instead and finish what the program intended to do to begin with.
+- Multiprocessing -> A system which has more than two processors to increase the computing speed of the system.
+>>> As there are multiple processors multiple processors can be executed at the same time.
+
+*Intrinsic lock (monitor lock): Every object has an Intrinsic lock associated with it, when a thread needs consistent
+>> access to an objects field, it has to acquire the objects Isentric lock, before it can access them.
+
+*Semaphore (general and programming):
+- General: A signal between one another.
+- Programming: A variable, which is abstract data type. Often used to control access to a common ressource by
+>> multiple processes in a concurrent system.
+-- Two types of semaphores;
+>>Semaphores which allow an arbitrary resource count are called counting semaphores
+X>>While semaphores which are restricted to the values 0 and 1 (or locked/unlocked, unavailable/available)
+>> are called binary semaphores and are used to implement locks.
+

@@ -1,0 +1,20 @@
+HTTP Methods:
+// Ref - Representational_state_Transfer (Wiki page)
+- Get
+Example:
+localhost:8080/cream GET -> Gets info on !ALL! creams
+localhost:8080/cream/1 GET -> Gets the specific cream due to an ID being assigned, in this case (1)
+
+- Post
+Example:
+localhost:8080/cream POST -> Sends data of this specific cream.
+
+- Put
+Example:
+localhost:8080/cream PUT -> Changing the info of the assigned ID cream, by putting in information.
+
+- Patch
+- Delete
+Example:
+localhost:8080/cream/1 DELETE -> Deletes info on X cream based on ID being assigned, in this case (1)
+----------

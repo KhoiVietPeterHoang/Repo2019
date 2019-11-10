@@ -1,0 +1,17 @@
+AUTO: Hibernate selects the generation strategy based on the used dialect,
+- Auto - generation strategy selected, based on database dialect.
+
+IDENTITY: Hibernate relies on an auto-incremented database column to generate the primary key,
+- Identity - Generates a new value with each insert operation/action. - Drawback; Requires PK value for each changed entity.
+
+SEQUENCE: Hibernate requests the primary key value from a database sequence,
+- Sequence - uses database sequence to generate unique values - requires additional select statements to get the next
+value of a database sequence. If no info is proved it 'Hibernate' will request the next value from its default sequence
+
+TABLE: Hibernate uses a database table to simulate a sequence.
+- table  It simulates a sequence by storing and updating its current value in a database table requiring
+- pessimitic locks - putting all transactions in sequential order
+
+-----------------
+
+

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Goats</title>
+    <link rel="stylesheet" type="text/css" href="./main.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+</head>
+<body>
+
+ <h1>Biggest innovator in goat technology 2k19</h1>
+ <a href="http://placegoat.com/1000/1000">~Random goat appearing</a>
+
+ <!-- Show the image of the goat here -->
+    <!--<img src="http://placegoat.com/100/100"> -->
+
+
+ <div class="about">
+     <p>About</p>
+ </div>
+
+ <div class="quote">
+     <p>Kanye quote of the browser session:</p>
+     <p class="quote-paragraph"></p>
+    <!-- <source src="https://api.kanye.rest/"> -->
+
+ </div>
+
+ <!--Soundfile for Trombone audio to autoplay -->
+ <audio src="./Trombone.mp3" autoplay="autoplay"></audio>
+
+ <div class="gallery">
+     <p>gallery of goats (GOG)</p>
+ </div>
+
+ <script>
+
+     var x = "https://api.kanye.rest/";
+     var b = console;
+     b.log("scoop");
+
+     var c = "woop";
+     console.log(c);
+
+     //Json object - Key, and value.
+     var JsonObject = {
+       //  key: "value"
+         name: "K",
+         age: 20
+     };
+
+    // console.log("Hi my name is", JsonObject.name , "and my age is", JsonObject.age,".");
+    // var savingTheConsoleLog = console.log("Hi my name is", JsonObject.name , "and my age is", JsonObject.age,".");
+     var about = "Hi my name is " + JsonObject.name + " and my age is " + JsonObject.age +".";
+     console.log(about);
+
+         //console.log($)
+     $(".about").append("<p>" + about + "</p>");
+
+     //Part of solution 3  var imageTagStart = "<img src='";
+     //Part of solution 3 var imageTagEnd = "' />";
+
+     for(var i = 0; i < 100; i++) {
+         //Solution 1 $(".gallery").append("<img src=\"http://placegoat.com/100/100\">")
+         //Solution 2 $(".gallery").append("<img src='" + "http://placegoat.com/100/100" + "' />")
+         //Solution 3 $(".gallery").append("<imageTagStart + "http://placegoat.com/100/100" + imageTagEnd);
+     }
+
+     //$.get("https://cat-fact.herokuapp.com/facts");
+
+     var ParagraphTagStart = "<p>";
+     var ParagraphTagEnd = "</p>";
+
+    //--- $.get("https://api.kanye.rest/", function response(data) {
+         //console.log(data)
+         //console.log(data.quote)
+     //--    $(".quote").append(ParagraphTagStart + data.quote + ParagraphTagEnd).fadeOut(3500);
+
+     //- });
+
+
+    function getKanyeQuotes(){
+        $.get("https://api.kanye.rest/", function response(data) {
+            $(".quote-paragraph").empty();
+            $(".quote-paragraph").text(data.quote);
+        });
+    }
+
+    getKanyeQuotes();
+
+
+         setInterval(function timeOut(){
+     //setTimeout(function timeOut(){
+       //Code to be executed upon time out (3500milis)
+       // $(".quote").fadeOut();
+
+         getKanyeQuotes();
+
+         }, 8000)
+
+    //   $(".quote").append("<source src=\"https://api.kanye.rest\">")
+
+
+ </script>
+
+
+</body>
+</html>
